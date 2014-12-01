@@ -55,6 +55,8 @@
 
 {% block coltype %}flex{% endblock %}
 
+{% block content_title %}<h1>{{ cl.opts.verbose_name_plural }}</h1>{% endblock %}
+
 {% block content %}
   {% block object-tools %}
     {% if has_add_permission %}
@@ -62,7 +64,7 @@
         {% block object-tools-items %}
           <li>
             <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="addlink btn btn-primary">
-              {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+              {% blocktrans with cl.opts.verbose_name as name %}Add{% endblocktrans %}
             </a>
           </li>
         {% endblock %}
