@@ -1,11 +1,10 @@
 {% extends "admin/base.html" %}
 {% load i18n %}
 
-{% block title %}{{ title }} | Управление ShopVillage{% endblock %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block branding %}
-    <a href="{% url 'admin:index' %}" class="brand" id="site-name">Управление ShopVillage</a>
-    <a href="/" class="brand">Перейти на сайт</a>
+    <a href="{% url 'admin:index' %}" class="brand" id="site-name">{{ site_header|default:_('Django administration') }}</a>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
