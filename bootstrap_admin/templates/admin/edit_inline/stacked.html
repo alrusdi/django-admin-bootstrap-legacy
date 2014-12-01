@@ -56,7 +56,7 @@
           prefix: '{{ inline_admin_formset.formset.prefix }}',
           adminStaticPrefix: '{% static "admin/" %}',
           deleteText: '<i class="icon-minus-sign"></i> {% trans "Remove" %}',
-          addText: '{% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|title %}<i class="icon-plus-sign"></i> Добавить "{{ verbose_name }}"{% endblocktrans %}'
+          addText: '{% with verbose_name=inline_admin_formset.opts.verbose_name|title %}<i class="icon-plus-sign"></i> {% blocktrans %}Add{% endblocktrans %} "{{ verbose_name }}"{% endwith %}'
         });
 })(django.jQuery);
 </script>

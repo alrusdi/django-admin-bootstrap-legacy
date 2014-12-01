@@ -121,7 +121,7 @@
     $("#{{ inline_admin_formset.formset.prefix }}-group .tabular.inline-related tfoot .move-add-row-after-me").tabularFormset({
           prefix: "{{ inline_admin_formset.formset.prefix }}",
           adminStaticPrefix: '{% static "admin/" %}',
-          addText: '{% blocktrans with inline_admin_formset.opts.verbose_name|title as verbose_name %}<i class="icon-plus-sign"></i> Добавить "{{ verbose_name }}"{% endblocktrans %}',
+          addText: '{% with verbose_name=inline_admin_formset.opts.verbose_name|title %}<i class="icon-plus-sign"></i> {% blocktrans %}Add{% endblocktrans %} "{{ verbose_name }}"{% endwith %}',
           deleteText: '<i class="icon-minus-sign"></i>{% trans 'Remove' %}'
     });
 })(django.jQuery);
