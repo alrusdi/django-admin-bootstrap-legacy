@@ -42,12 +42,6 @@
                 <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
                 <span class="divider">/</span>
             </li>
-            <li>
-                <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">
-                    {{ app_label|capfirst|escape }}
-                </a>
-                <span class="divider">/</span>
-            </li>
             <li class="active">{{ cl.opts.verbose_name_plural|capfirst }}</li>
         </ul>
     {% endblock %}
