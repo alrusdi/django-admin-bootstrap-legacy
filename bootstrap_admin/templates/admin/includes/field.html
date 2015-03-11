@@ -45,7 +45,13 @@
                                 {% if field.field|widget_type == 'adminradioselect'  %}
                                     {{ field.field }}
                                 {% else %}
-                                    {{ field.field|add_class:"span8" }}
+                                    {% with field_type=field.field|widget_type %}
+                                    {% if field_type == 'admindatewidget' or field_type == 'admindatetimewidget' or field_type == 'admintimewidget' %}
+                                        {{ field.field|add_class:"span2" }}
+                                    {% else %}
+                                        {{ field.field|add_class:"span8" }}
+                                    {% endif %}
+                                    {% endwith %}
                                 {% endif %}
                                 
                             {% endif %}
