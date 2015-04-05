@@ -8,7 +8,7 @@ f.close()
 
 setup(
     name='bootstrap_admin_legacy',
-    version='0.1.1',
+    version='0.1.3',
     description='Bootstrap theme for Django admin',
     long_description=readme,
     author='Douglas Miranda',

@@ -144,4 +144,13 @@ def user_admin_urlname(value, arg):
     Providing a link to change the user
     (for working better with auth custom user)
     '''
-    return 'admin:%s_%s_%s' % (value._meta.app_label, value._meta.module_name, arg)
+
+@register.filter
+def user_admin_urlname(value, arg):
+    '''
+    Providing a link to change the user
+    (for working better with auth custom user)
+    '''
+    opts = value._meta
+    model_name = getattr(opts, 'module_name', opts.model_name)
+    return 'admin:%s_%s_%s' % (value._meta.app_label, model_name, arg)
