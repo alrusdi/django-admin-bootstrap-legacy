@@ -1,8 +1,7 @@
 Bootstrap 2 Skin for Django Admin
 =================================
 
-django-admin-bootstrap-legacy is a **Custom Responsible Skin for Django Admin
-1.7 and upper.
+django-admin-bootstrap-legacy is a Custom Responsible Skin for Django Admin 1.7 and upper.
 
 
 Features
@@ -18,11 +17,13 @@ Install
 -------
 
 **NOTE:** I'm assuming you use `pip <http://www.pip-installer.org/>`_ to
-install the Python Packages.
+install the Python Packages. ::
 
-from github master branch ::
+    $ pip install bootstrap_admin_legacy
 
-    $ pip install git+ssh://git@github.com/alrusdi/django-admin-bootstrap-legacy.git
+or from github master branch ::
+
+    $ pip install git+https://github.com/alrusdi/django-admin-bootstrap-legacy.git
 
 
 And don't forget to add *bootstrap\_admin* in **INSTALLED\_APPS** before
