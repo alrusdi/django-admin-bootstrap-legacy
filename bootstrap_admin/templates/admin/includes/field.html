@@ -37,23 +37,33 @@
                             {% endif %}
                         </div>
                         {% else %}
-                        <div class="control-label">{{ field.label_tag }}</div>
-                        <div class="controls">
+                        {% with field_type=field.field|widget_type %}
+                        <div class="control-label">
+                            {% if field_type == 'checkboxselectmultiple' %}
+                                <label {% if field.field.field.required %}class="required"{% endif %}>
+                                    {{ field.label_tag|striptags }}
+                                </label>
+                            {% else %}
+                                {{ field.label_tag }}
+                            {% endif %}
+                        </div>
+                        <div class="controls {{ field.attr.class }}">
                             {% if field.is_readonly %}
                                 <p>{{ field.contents|linebreaksbr }}</p>
                             {% else %}
                                 {% if field.field|widget_type == 'adminradioselect'  %}
                                     {{ field.field }}
                                 {% else %}
-                                    {% with field_type=field.field|widget_type %}
                                     {% if field_type == 'admindatewidget' or field_type == 'admindatetimewidget' or field_type == 'admintimewidget' %}
                                         {{ field.field|add_class:"span2" }}
+                                    {% elif field_type == 'checkboxselectmultiple' %}
+                                        <label class="checkbox checkboxes-list" for="">
+                                            {{ field.field }}
+                                        </label>
                                     {% else %}
                                         {{ field.field|add_class:"span8" }}
                                     {% endif %}
-                                    {% endwith %}
                                 {% endif %}
-                                
                             {% endif %}
 
                             {% for error in field.field.errors %}
@@ -67,6 +77,7 @@
                             {% endif %}
 
                         </div>
+                        {% endwith %}
                     {% endif %}
                 {% endif %}
             </div>

@@ -65,14 +65,15 @@ def add_class(field, css_class):
 
 @register.filter(name='widget_type')
 def widget_type(field):
-    """
-    Template filter that returns field widget class name (in lower case).
-    E.g. if field's widget is TextInput then {{ field|widget_type }} will
-    return 'textinput'.
-    """
-    if hasattr(field, 'field') and hasattr(field.field, 'widget') and field.field.widget:
-        return field.field.widget.__class__.__name__.lower()
-    return ''
+    if isinstance(field, dict):
+        return 'adminreadonlyfield'
+    try:
+        # For widgets like SelectMultiple, checkboxselectmultiple
+        widget_type = field.field.widget.widget.__class__.__name__.lower()
+        #import pdb; pdb.set_trace()
+    except Exception as e:
+        widget_type = field.field.widget.__class__.__name__.lower()
+    return widget_type
 
 
 class AdminLogNode(template.Node):
